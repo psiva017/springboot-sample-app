@@ -19,12 +19,12 @@ import com.springboot.db.DataAccessor;
 import com.springboot.exception.DataAccessException;
 
 /**
- * @author psiva
- * This 
+ * @author psiva This
  */
 
 @Repository
-@Transactional(propagation = Propagation.REQUIRED,rollbackFor = DataAccessException.class)
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = DataAccessException.class)
+@SuppressWarnings("unchecked")
 public class DataAccessorImpl implements DataAccessor, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +32,6 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> getList(String queryString, List<QueryParam<?>> params) throws DataAccessException {
 		Object obj = null;
@@ -42,7 +41,7 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 			setParam(params, query);
 			obj = query.list();
 		}
-		
+
 		return (List<T>) obj;
 	}
 
@@ -56,7 +55,6 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> getList(String queryString) {
 		Object obj = null;
@@ -68,7 +66,6 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 		return (List<T>) obj;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getObjectWithNamedQuery(String namedQuey) {
 		Session session = sessionFactory.openSession();
@@ -76,7 +73,6 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 		return (T) query.uniqueResult();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getListWithNamedQuery(String namedQuey, List<QueryParam<?>> params) {
 		Session session = sessionFactory.openSession();
@@ -85,8 +81,6 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 		return (T) query.uniqueResult();
 	}
 
-
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> getListWithNamedQuery(String namedQuey) {
 		Session session = sessionFactory.openSession();
@@ -94,7 +88,6 @@ public class DataAccessorImpl implements DataAccessor, Serializable {
 		return (List<T>) query.list();
 	}
 
-	
 	private void setParam(List<QueryParam<?>> params, Query query) {
 		for (QueryParam<?> queryParam : params) {
 			if (queryParam.getValue().getClass().equals(List.class)) {

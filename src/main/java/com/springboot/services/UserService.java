@@ -13,7 +13,6 @@ import com.springboot.models.User;
  */
 public interface UserService {
 
-	
 	public List<User> doGetAllUsers();
 
 	public User doGetUserByEmail(String email);

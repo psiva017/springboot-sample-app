@@ -1,21 +1,23 @@
 package com.springboot.exception;
 
-public class ServiceException  extends Exception{
+public class ServiceException extends Exception {
 
 	private static final long serialVersionUID = 1L;
-	
-	public ServiceException(){
+
+	public ServiceException() {
 		super();
 	}
-	public ServiceException(String message){
+
+	public ServiceException(String message) {
 		super(message);
 	}
-	public ServiceException(String msg, Throwable exception) {
-	    super(msg, exception);
-	  }
 
-	  public ServiceException(Throwable exception) {
-	    super(exception);
-	  }
+	public ServiceException(String msg, Throwable exception) {
+		super(msg, exception);
+	}
+
+	public ServiceException(Throwable exception) {
+		super(exception);
+	}
 
 }

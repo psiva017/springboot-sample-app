@@ -23,24 +23,20 @@ import javax.persistence.Table;
  *
  */
 @Entity
-//----------- Named Queries Section STARTS ----------
-	@NamedQueries({
-		@NamedQuery(name="getUserByEmail", query="From User u where u.email =:email"),
-		@NamedQuery(name="getAllUser",query="From User"),
-		@NamedQuery(name="getUserById", query="From User u where u.id =:id"),
-		@NamedQuery(name="getUserByRole",query="From User u where u.role.id = :roleId")
-	})
-	//----------- Named Queries Section ENDS ----------
-	
+// ----------- Named Queries Section STARTS ----------
+@NamedQueries({ @NamedQuery(name = "getUserByEmail", query = "From User u where u.email =:email"),
+		@NamedQuery(name = "getAllUser", query = "From User"),
+		@NamedQuery(name = "getUserById", query = "From User u where u.id =:id"),
+		@NamedQuery(name = "getUserByRole", query = "From User u where u.role.id = :roleId") })
+// ----------- Named Queries Section ENDS ----------
 
 @Table(name = "users")
 public class User {
 
-	
-	public User(){
-		
+	public User() {
+
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -64,7 +60,7 @@ public class User {
 	private String passwordSalt;
 
 	@Column(name = "compaly_name")
-	
+
 	private String company;
 
 	@ManyToOne

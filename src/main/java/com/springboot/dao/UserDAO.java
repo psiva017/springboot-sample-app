@@ -13,7 +13,6 @@ import com.springboot.models.User;
  */
 public interface UserDAO {
 
-	
 	public List<User> getAllUsers();
 
 	public User getUserByEmail(String email);

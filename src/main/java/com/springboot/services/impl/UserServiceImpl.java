@@ -19,16 +19,14 @@ import com.springboot.services.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	@Override
 	public List<User> doGetAllUsers() {
-		List<User> list = userDAO.getAllUsers();
-		return list;
+		return userDAO.getAllUsers();
 	}
-	
+
 	@Override
 	public User doGetUserByEmail(String email) {
 		return userDAO.getUserByEmail(email);

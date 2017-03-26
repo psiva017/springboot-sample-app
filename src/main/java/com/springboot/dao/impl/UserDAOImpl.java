@@ -24,21 +24,21 @@ public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private DataAccessor dataAccessor;
-	
+
 	@Override
 	public List<User> getAllUsers() {
 
-		List<User> users = null;
-		users = dataAccessor.getListWithNamedQuery("getAllUser");
-		return users;
+		return dataAccessor.getListWithNamedQuery("getAllUser");
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		QueryParam<String> qp = new QueryParam<>("email",email);
-		List<QueryParam<?>> qps= new ArrayList<>();
+
+		QueryParam<String> qp = new QueryParam<>("email", email);
+		List<QueryParam<?>> qps = new ArrayList<>();
 		qps.add(qp);
-		return dataAccessor.getListWithNamedQuery("getUserByEmail",qps);
+
+		return dataAccessor.getListWithNamedQuery("getUserByEmail", qps);
 	}
 
 }

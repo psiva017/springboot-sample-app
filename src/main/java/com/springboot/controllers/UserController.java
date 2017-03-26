@@ -28,10 +28,9 @@ import com.springboot.services.UserService;
 public class UserController implements ErrorController {
 	private static final String PATH = "/error";
 
-	
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping("/")
 	public String index() {
 		return "Application started running";
@@ -41,18 +40,16 @@ public class UserController implements ErrorController {
 	public ResponseEntity<List<User>> getStudentList() {
 		List<User> userList = new ArrayList<>();
 		userList = userService.doGetAllUsers();
-		return new ResponseEntity<>(userList,HttpStatus.OK);
+		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 
-	
 	@GetMapping(value = "/user")
-	public ResponseEntity<User> getStudent(@RequestParam(name="email",required=true) String email) {
+	public ResponseEntity<User> getStudent(@RequestParam(name = "email", required = true) String email) {
 		User user = null;
-		user = userService.doGetUserByEmail( email);
-		return new ResponseEntity<User>(user,HttpStatus.OK);
+		user = userService.doGetUserByEmail(email);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
-	
-	
+
 	@RequestMapping(value = PATH)
 	public String error() {
 		return "Error handling";
